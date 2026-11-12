@@ -1,0 +1,94 @@
+{
+  "id": "notrat-nutstore",
+  "name": "坚果云同步",
+  "version": "2.1.0",
+  "type": "feature",
+  "manifestVersion": 2,
+  "enabled": true,
+  "scope": "global",
+  "icon": "data:image/webp;base64,UklGRgAFAABXRUJQVlA4WAoAAAAQAAAAvwAAvwAAQUxQSCAAAAABDzD/EREaFLVtA5VZ+XPavUFYPxH9nwDIRsuTf5lOBFZQOCC6BAAAcCAAnQEqwADAAD4xGIpEIiGhETo0bCADBLO3cLmd9WkFvVeSllW6B5a5xn5V/0nql9JnzAfq1+oHYA9AD+m/57rGPQA/Y70s/2o+C/9yvR3/+mcO6bD6CPkv0ecj/w++kYe/u/5YXILHv5zX+5/hvxu9o/z7/u/cI/kn9F/3PYG/aP2SP1VEWD6XNfDbqt7yHS5r4bdVveQ6XNfDbqt6crwJNadKHGedfUQ6WjP3owIeON7IJdw9d7JwdTLCuF+jR2FLZMy7tId1+A0YEDVW0I0lln+w8gK4i1mKbXC45JzAPeuleQ6OWd2x+am6+hqadEB814MP7LDBKpae8h0ua+G3Vb3kOlzXw26qYAD+/9oDgAD7//e9wvuWNP+KuNwG0k7QhIpf+/46E8oThf1ZqKmxvZfkQvaeulXiuz1seR+0TR+XUl16LYiJGZ/vdFhhPdL389XpnGnXWp/qPtwuuu58K9TPO60qvY/e9vC5Enn0H9ieFB57O0cZ7vfUJCyVWlNc9d8RdaXMbmF/jvDwmwTJXEZYhJQJ+7pfkR+GPVJOLJYn9IzhDKeoT7n/7G3DQqOPx6QiBJ6lZ0AyF3cey+SaF9Mo9NnqxMOfME9nK9bXb7U8N4BKTgXx0Aw7LLYS+yHIEdyLaOMw0CuuoPudzOJBj/d45j52b2WF7hQx6dXCd9DbEvnmklntX+/4J5+MiQrYnM9EsuyNsrFEGBhP7B5m+FZcoaTkIPwdh8LJ8bzuKzQ2wfRLkx/1Jym08Z4wxlk26+JH4H/lg5/wUlUEDo9iqThPDFtneMMwriIktcadceLTLpYNlyUXeuaTDZrv0nhCF/SiPb3Stff+XkYS43YMYPVG1thH2m5Q3vz+wFNy87/B+cSNbi1JdQ3aP6lC5dFjSYfEgGqIs6C101PVuA//JN/0rMIybOCC1G7PgC/wUR9RAx5PLlKwnd+/9HzgxRicLDCVflBdBHlf79Mi82g+kbt3z/9GOPEx2HAFKkVXOFW5JYVD/9eLwHChMWWr15/S4QZD1qk2INC6idTpQVgfzY8p/zy21tuhzExnzwqKIQP84bvWGyVcGyIp5v//w8DLFdHinRUB/+vf8eYw+jGs1wgypebjE8GnrLZYdSoWeG/G8yoJeRWmAOb5+fJ5bSWebDJw8LrhbMd+Z+b0BGd+uPdn5heOHtZ4nRXhgW87kX86XKa0CCjBdH0OTAsEtS3AAVTkeD2XTRpiOkn3TaujzISy2W8SCvfljKrUNGs41KigjUwuecD6b0+y5S5R+9gDhoC9FlDXCJehLoHTdL6nFd6+1vyMWFftixCx7YEfUBXr6mk8IRBX7JP00+r8su38LuOZR20NXLgJWvdbS8z9FjNTuEPHSEiQuaSNXtga0BhB60nxtpaliKYrX5EVMjXwtBYuZ4qVMHcwG+i0pXeB3kiHEvYOruYqNPXFvX6G+C8mHVeK3zgcD4HyQoEZesXBFJLrf97Nsxk7lFSQ8/B4dZsYoeMlbp1FQosWvnBjydAM8f0ZZSYVKzlyAeCUXr0rwtTKv9oUAuxCmtpzu+Kicjd0nhX/ylLjpUG3f7BAQ8azGQZZs8LPMKpWrKNwuzwF26AAAAAAAA==",
+  "description": "把电脑上的文件夹备份到坚果云，也能把云端的内容取回来。三步走：连接、看差异、同步。动手前先看一遍要传什么，删文件会先问你；两边都改过的文件默认各留一份，不会悄悄覆盖。账号和同步记录只存在本机。",
+  "author": {
+    "name": "Notrat Community"
+  },
+  "license": "AGPL-3.0-or-later",
+  "notrat": {
+    "minVersion": "1.3.5"
+  },
+  "mcpServers": [
+    {
+      "id": "nutstore",
+      "name": "坚果云同步工具",
+      "transport": "stdio",
+      "command": "node",
+      "args": [
+        "${pluginDir}/server/index.js"
+      ],
+      "env": {
+        "NUTSTORE_DATA_DIR": "${settings:dataDir}"
+      }
+    }
+  ],
+  "contributions": {
+    "settings": [
+      {
+        "key": "notrat-nutstore",
+        "title": "坚果云同步",
+        "description": "同步方式、冲突处理、过滤规则、请求间隔都在「坚果云同步」页面里改。这里只需要确认数据放在哪。",
+        "fields": [
+          {
+            "key": "dataDir",
+            "label": "数据目录",
+            "type": "text",
+            "default": "",
+            "description": "留空就用 ~/.notrat/plugins/data/notrat-nutstore/。这里会存配置和同步记录（含坚果云应用密码），不要指向公开目录。"
+          }
+        ]
+      }
+    ],
+    "ui": [
+      {
+        "id": "nutstore-page",
+        "title": "坚果云同步",
+        "icon": "☁️",
+        "location": "page",
+        "openMode": "page",
+        "content": {
+          "type": "component",
+          "sourceFile": "panels/sync.tsx",
+          "fullBleed": true
+        }
+      }
+    ],
+    "commands": [
+      {
+        "name": "nutstore-status",
+        "tool": "ns_status",
+        "usage": "/nutstore-status"
+      },
+      {
+        "name": "nutstore-plan",
+        "tool": "ns_plan",
+        "usage": "/nutstore-plan"
+      },
+      {
+        "name": "nutstore-sync",
+        "tool": "ns_run",
+        "usage": "/nutstore-sync"
+      }
+    ],
+    "promptSections": [
+      {
+        "slot": "custom",
+        "title": "坚果云同步（notrat-nutstore）",
+        "content": "用户想把工作区/笔记目录备份或同步到坚果云、问同步方式怎么选、或者问同步失败原因时，用本插件（工具前缀 ns_）。\n【动手前】先 ns_status 看是否已配置（configured）；没配置就按三步引导，每次只讲一步：① 去坚果云网页版「账户信息 → 安全选项 → 添加应用密码」生成第三方应用密码（不是登录密码）；② 在「坚果云同步」页面填账号（邮箱）+ 应用密码，点「测试连接」；③ 看差异 → 开始同步。\n【铁律】\n1. 永远先 ns_plan 预演，把「上传 X / 下载 Y / 删除 Z / 冲突 N」讲给用户听，再问是否执行。不要跳过预演直接 ns_run。\n2. 计划里 deleteCount > 0 且用户没明确同意时，ns_run 会返回 requiresConfirmation，删掉的清单在 sample 字段里。此时**必须把删除清单（前 10 条路径）原样转告**，等用户下一条真实消息明确说「删/可以」后再带 confirmDelete:true 调用。禁止自问自答或替用户决定。\n3. 镜像方式（send-only-override-changes / receive-only-revert-local-changes）会删除另一端独有的文件。第一次用这类方式前必须提醒用户先备份。\n4. 冲突永远不要静默覆盖。默认 no-conflict-merge：本地保留原名，云端那份另存为 xxx.conflict-remote-时间.md。用户问「为什么多了个 conflict 文件」就解释这个。\n5. 解释术语要接地气：上传=把本地改动备份到云端；下载=把云端改动取回来；冲突=同一个文件两边都改过；看差异=只看不改。\n【限额】坚果云免费版 600 次请求 / 30 分钟、付费版 1500 次、单文件 500 MB、单次列目录 750 项。plan 的 summary.requestEstimate 就是本次预计请求数，超过 requestQuota 时 notes 里会有具体建议（收紧过滤规则 / 分次同步 / 首次全量交给官方客户端）。用户抱怨「同步很慢/老是失败」时优先查这个，让他们把 minGapMs 调到 200–300、concurrency 降到 2。\n【出错时】401 = 应用密码错（不是登录密码）；429/503 = 请求太频繁；404 = 云端目录不存在，先在坚果云网页版建好；409 = 父目录不存在。把工具的 hint 字段翻译成中文给用户，别把 HTTP 码原样丢给用户。\n【凭据】绝不回显应用密码，也不要把 password 字段写进任何文件或聊天记录。"
+      }
+    ]
+  },
+  "upstream": {
+    "name": "obsidian-nutstore-sync",
+    "url": "https://github.com/nutstore/obsidian-nutstore-sync",
+    "license": "AGPL-3.0",
+    "note": "本插件迁移自该项目（WebDAV 同步模型、5 种同步策略、4 种冲突策略、分页 PROPFIND 等）。原项目版权归其作者所有；本插件按 AGPL-3.0 同样发布，完整许可全文见包内 LICENSE。"
+  }
+}
