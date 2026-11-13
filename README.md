@@ -4,6 +4,8 @@
 ![version](https://img.shields.io/badge/version-2.1.0-green)
 ![platform](https://img.shields.io/badge/platform-Notrat-lightgrey)
 
+> 由 **巢墨科技（Notrat 官方）** 开发维护。
+
 把电脑上的文件夹与 **坚果云** 做增量同步的 Notrat 插件。界面只有三步：**连接 → 看差异 → 同步**。
 
 动手前先看清会改什么，删文件必须你点头，两边都改过的文件默认各留一份。
