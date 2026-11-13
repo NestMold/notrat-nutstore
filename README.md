@@ -24,7 +24,7 @@ Notrat 会从 GitHub 上带 `notrat-plugin` 标签的公开仓库自动发现插
 **手动安装**
 
 ```bash
-git clone https://github.com/<你的用户名>/notrat-nutstore.git
+git clone https://github.com/NestMold/notrat-nutstore.git
 cd notrat-nutstore
 node install.mjs
 ```
